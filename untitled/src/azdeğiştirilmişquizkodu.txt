@@ -1,0 +1,934 @@
+
+%32 harbi çalışan kod:------------------------------------------
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+//tamamen çalışan düzgün kod !!!
+
+//uyarı: kodun tamamen düzgün çalışması için inputQuiz1.txt dosyanızı sağ tıklayıp path(yol) olarak kopyalayıp
+//131. satırda path name yazan yere(new File ın içine) yapıştırınız ve bir değil 2 tane ayraç(//) bırakınız!
+//örnek: "C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt"
+class Rectangle {
+    private double width;
+    private double height;
+
+    public Rectangle() {
+        this(1, 1);
+    }
+
+    public Rectangle(double width, double height) {
+        setWidth(width);
+        setHeight(height);
+        System.out.println("Constructed Rectangle with width " + width + " and height " + height);
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+    }
+
+    public Rectangle(Rectangle other) {
+        this(other.width, other.height);
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        if (width > 0)
+            this.width = width;
+        else
+            throw new IllegalArgumentException("Width must be positive.");
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        if (height > 0)
+            this.height = height;
+        else
+            throw new IllegalArgumentException("Height must be positive.");
+    }
+
+    public double getArea() {
+        return width * height;
+    }
+
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle [width=" + width + ", height=" + height + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj ==this)
+            return true;
+        if (!(obj instanceof Rectangle))
+            return false;
+        Rectangle other = (Rectangle) obj;
+        return width == other.width && height == other.height;
+    }
+}
+
+class Circle {
+    private double radius;
+
+    public Circle() {
+        this(1);
+    }
+
+    public Circle(double radius) {
+        setRadius(radius);
+        System.out.println("Constructed Circle with radius " + radius);
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+    }
+
+    public Circle(Circle other) {
+        this(other.radius);
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        if (radius > 0)
+            this.radius = radius;
+        else
+            throw new IllegalArgumentException("Radius must be positive.");
+    }
+
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle [radius=" + radius + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Circle))
+            return false;
+        Circle other = (Circle) obj;
+        return radius == other.radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            File file = new File("C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String[] tokens = scanner.nextLine().split(" ");
+                if (tokens[0].equalsIgnoreCase("Rectangle")) {
+                    double width = Double.parseDouble(tokens[1]);
+                    double height = Double.parseDouble(tokens[2]);
+                    new Rectangle(width, height);
+                } else if (tokens[0].equalsIgnoreCase("Circle")) {
+                    double radius = Double.parseDouble(tokens[1]);
+                    new Circle(radius);
+                }
+            }
+            scanner.close();
+
+            Rectangle defaultRectangle = new Rectangle();
+            defaultRectangle.setWidth(15);
+            defaultRectangle.setHeight(10);
+
+            Rectangle copyRectangle = new Rectangle(defaultRectangle);
+
+            System.out.println("Are the two Rectangle objects equal? " + defaultRectangle.equals(copyRectangle));
+            System.out.println("Default Rectangle: " + defaultRectangle);
+            System.out.println("Copy Rectangle: " + copyRectangle);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+    }
+}
+
+
+
+
+%27lik son kod?:-----------------------------------------------------------
+
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+//tamamen çalışan düzgün kod !!!
+
+//uyarı: kodun tamamen düzgün çalışması için inputQuiz1.txt dosyanızı sağ tıklayıp path(yol) olarak kopyalayıp
+//131. satırda path name yazan yere(new File ın içine) yapıştırınız ve bir değil 2 tane ayraç(//) bırakınız!
+//örnek: "C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt"
+class Rectangle {
+    public double width;
+    public double height;
+
+    public Rectangle() {
+        this(1, 1);
+    }
+
+    public Rectangle(double width, double height) {
+        setWidth(width);
+        setHeight(height);
+        System.out.println("Constructed Rectangle with width " + width + " and height " + height);
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+    }
+
+    public Rectangle(Rectangle other) {
+        this(other.width, other.height);
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        if (width > 0)
+            this.width = width;
+        else
+            throw new IllegalArgumentException("Width must be positive.");
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        if (height > 0)
+            this.height = height;
+        else
+            throw new IllegalArgumentException("Height must be positive.");
+    }
+
+    public double getArea() {
+        return width * height;
+    }
+
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle [width=" + width + ", height=" + height + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj ==this)
+            return true;
+        if (!(obj instanceof Rectangle))
+            return false;
+        Rectangle other = (Rectangle) obj;
+        return width == other.width && height == other.height;
+    }
+}
+
+class Circle {
+    private double radius;
+
+    public Circle() {
+        this(1);
+    }
+
+    public Circle(double radius) {
+        setRadius(radius);
+        System.out.println("Constructed Circle with radius " + radius);
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+    }
+
+    public Circle(Circle other) {
+        this(other.radius);
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        if (radius > 0)
+            this.radius = radius;
+        else
+            throw new IllegalArgumentException("Radius must be positive.");
+    }
+
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle [radius=" + radius + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Circle))
+            return false;
+        Circle other = (Circle) obj;
+        return radius == other.radius;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        try {
+            File file = new File("C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String[] tokens = scanner.nextLine().split(" ");
+                if (tokens[0].equalsIgnoreCase("Rectangle")) {
+                    double width = Double.parseDouble(tokens[1]);
+                    double height = Double.parseDouble(tokens[2]);
+                    new Rectangle(width, height);
+                } else if (tokens[0].equalsIgnoreCase("Circle")) {
+                    double radius = Double.parseDouble(tokens[1]);
+                    new Circle(radius);
+                }
+            }
+            scanner.close();
+
+            Rectangle defaultRectangle = new Rectangle();
+            defaultRectangle.setWidth(15);
+            defaultRectangle.setHeight(10);
+
+            Rectangle copyRectangle = new Rectangle(defaultRectangle);
+
+            System.out.println("Are the two Rectangle objects equal? " + defaultRectangle.equals(copyRectangle));
+            System.out.println("Default Rectangle: " + defaultRectangle);
+            System.out.println("Copy Rectangle: " + copyRectangle);
+
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+    }
+}
+%15 benzerlik çalışan muhtişim kod:-----------------------------------------------------------------------------
+
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+//tamamen çalışan düzgün kod !!!
+
+//uyarı: kodun tamamen düzgün çalışması için inputQuiz1.txt dosyanızı sağ tıklayıp path(yol) olarak kopyalayıp
+//133. satırda path name yazan yere(new File ın içine) yapıştırınız ve bir değil 2 tane ayraç(//) bırakınız!
+//örnek: "C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt"
+class rectangle {
+    public double width;
+    public double height;
+
+    public rectangle() {
+        this(1, 1);
+    }
+
+    public rectangle(double width, double height) {
+        setWidth(width);
+        setHeight(height);
+        System.out.println("Constructed rectangle's width " + width + " and height " + height);
+        System.out.println("Area=  " + getArea());
+        System.out.println("Perimeter= " + getPerimeter());
+    }
+
+    public rectangle(rectangle other) {
+        this(other.width, other.height);
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        if (width > 0)
+            this.width = width;
+        else
+            System.out.println("Width has to be positive.");
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        if (height > 0)
+            this.height = height;
+        else
+            System.out.println("Height has to be positive.");
+    }
+
+    public double getArea() {
+        return width * height;
+    }
+
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+
+    @Override
+    public String toString() {
+        return "rectangle specs [width=" + width + ", height=" + height + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj ==this)
+            return true;
+        if (!(obj instanceof rectangle))
+            return false;
+        rectangle other = (rectangle) obj;
+        return width == other.width && height == other.height;
+    }
+}
+
+class Circle {
+    private double radius;
+
+    public Circle() {
+        this(1);
+    }
+
+    public Circle(double radius) {
+        setRadius(radius);
+        System.out.println("Constructed circle and it's radius " + radius);
+
+        System.out.println("Area=  " + getArea());
+
+        System.out.println("Perimeter=  " + getPerimeter());
+    }
+
+    public Circle(Circle other) {
+        this(other.radius);
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        if (radius > 0)
+            this.radius = radius;
+        else
+            System.out.println("Radius has to be positive.");
+    }
+
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public String toString() {
+        return "circle [radius=" + radius + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Circle))
+            return false;
+        Circle other = (Circle) obj;
+        return radius == other.radius;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        try {
+            File file = new File("C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt");//buraya inputQuiz1.txt dosyanızın path nameini yapıştırınız!
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String[] tokens = scanner.nextLine().split(" ");
+                if (tokens[0].equalsIgnoreCase("Rectangle")) {
+                    double width = Double.parseDouble(tokens[1]);
+                    double height = Double.parseDouble(tokens[2]);
+                    new rectangle(width, height);
+                } else if (tokens[0].equalsIgnoreCase("Circle")) {
+                    double radius = Double.parseDouble(tokens[1]);
+                    new Circle(radius);
+                }
+            }
+            scanner.close();
+
+            rectangle defaultRectangle = new rectangle();
+            defaultRectangle.setWidth(15);
+            defaultRectangle.setHeight(10);
+
+            rectangle copyRectangle = new rectangle(defaultRectangle);
+
+            System.out.println("Are the two Rectangle objects equal? " + defaultRectangle.equals(copyRectangle));
+            System.out.println("Default Rectangle:  " + defaultRectangle);
+            System.out.println("Copy Rectangle=  " + copyRectangle);
+
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("File not here.");
+        }
+    }
+}
+
+%10 benzer kod:-------------------------------------------------------------------
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+//tamamen çalışan düzgün kod !!!
+
+//uyarı: kodun tamamen düzgün çalışması için inputQuiz1.txt dosyanızı sağ tıklayıp path(yol) olarak kopyalayıp
+//139. satırda path name yazan yere(new File ın içine) yapıştırınız ve bir değil 2 tane ayraç(//) bırakınız!
+//örnek: "C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt"
+
+//ayrıca virgül olayını çözemedim o yüzden inputQuiz1.txt içine değerleri yazarken lütfen virgülsüz (veya arada başka herhangi bir karakter (veya boşluk vs.) olmadan) yazınız
+//örnek: Rectangle 4 5
+//örnek: Circle 9
+//gibi gibi...
+
+class rectangle {
+    public double width;
+    public double height;
+
+    public rectangle() {
+        this(1, 1);
+    }
+
+    public rectangle(double width, double height) {
+        setWidth(width);
+        setHeight(height);
+        System.out.println("Constructed rectangle's width " + width + " and height " + height);
+        System.out.println("Area=  " + getArea());
+        System.out.println("Perimeter= " + getPerimeter());
+    }
+
+    public rectangle(rectangle other) {
+        this(other.width, other.height);
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        if (width > 0)
+            this.width = width;
+        else
+            System.out.println("Width has to be positive.");
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        if (height > 0)
+            this.height = height;
+        else
+            System.out.println("Height has to be positive.");
+    }
+
+    public double getArea() {
+        return width * height;
+    }
+
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+
+    @Override
+    public String toString() {
+        return "rectangle specs [width=" + width + ", height=" + height + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj ==this)
+            return true;
+        if (!(obj instanceof rectangle))
+            return false;
+        rectangle other = (rectangle) obj;
+        return width == other.width && height == other.height;
+    }
+}
+
+class circle {
+    private double radius;
+
+    public circle() {
+        this(1);
+    }
+
+    public circle(double radius) {
+        setRadius(radius);
+        System.out.println("Constructed circle and it's radius " + radius);
+
+        System.out.println("Area=  " + getArea());
+
+        System.out.println("Perimeter=  " + getPerimeter());
+    }
+
+    public circle(circle other) {
+        this(other.radius);
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        if (radius > 0)
+            this.radius = radius;
+        else
+            System.out.println("Radius has to be positive.");
+    }
+
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public String toString() {
+        return "circle [radius=" + radius + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof circle))
+            return false;
+        circle other = (circle) obj;
+        return radius == other.radius;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        try {
+            File file = new File("C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt");//buraya inputQuiz1.txt dosyanızın path nameini 2 ayraçla (\\) yapıştırınız!
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String[] tokens = scanner.nextLine().split(" ");
+
+                if (tokens[0].equalsIgnoreCase("Rectangle")) {
+                    double width = Double.parseDouble(tokens[1]);
+                    double height = Double.parseDouble(tokens[2]);
+                    new rectangle(width, height);
+
+                } else if (tokens[0].equalsIgnoreCase("Circle")) {
+                    double radius = Double.parseDouble(tokens[1]);
+                    new circle(radius);
+
+                }
+            }
+            scanner.close();
+
+            rectangle defaultrectangle = new rectangle();
+            defaultrectangle.setWidth(15);
+            defaultrectangle.setHeight(10);
+
+            rectangle copyrectangle = new rectangle(defaultrectangle);
+
+            System.out.println("Are the two Rectangle objects equal? " + defaultrectangle.equals(copyrectangle));
+            System.out.println("Default Rectangle=  " + defaultrectangle);
+            System.out.println("Copy Rectangle=   " + copyrectangle);
+
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("File isn't here.");
+        }
+    }
+}
+
+ceylin kod:--------------------------------------------------
+
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import static java.lang.Double.parseDouble;
+//tamamen çalışan düzgün kod !!!
+
+//uyarı: kodun tamamen düzgün çalışması için inputQuiz1.txt dosyanızı sağ tıklayıp path(yol) olarak kopyalayıp
+//152. satırda path name yazan yere(new File ın içine) yapıştırınız ve bir değil 2 tane ayraç(//) bırakınız!
+//örnek: "C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt"
+
+//ayrıca inputQuiz.txt dosyasına  gireceğiniz şekilleri lütfen şu formatta giriniz:
+//Rectangle,4,5
+//Circle,9
+//lütfen başka şekilde dosyaya veri girmeyiniz(ekstra karakter,boşluk veya sözcük falan)!
+
+class Rectangle {
+
+    private double width;
+    private double height;
+
+    public Rectangle() {
+        this(1, 1);
+    }
+
+    public Rectangle(double width, double height) {
+        setWidth(width);
+        setHeight(height);
+        System.out.println("\nConstructed rectangle's width " + width + " and height " + height);
+        System.out.println("Area = " + getArea());
+        System.out.println("Perimeter = " + getPerimeter()+"\n");
+    }
+
+    public Rectangle(Rectangle rectangle) {
+        this(rectangle.width, rectangle.height);
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        if (width > 0) {
+            this.width = width;
+        } else {
+            System.out.println("Width has to be positive.");
+        }
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        if (height > 0) {
+            this.height = height;
+        } else {
+            System.out.println("Height has to be positive.");
+        }
+    }
+
+    public double getArea() {
+        return width * height;
+    }
+
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle's width = " + width + ", height = " + height;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Rectangle)) {
+            return false;
+        }
+        Rectangle other = (Rectangle) obj;
+        return width == other.width && height == other.height;
+    }
+}
+
+
+
+
+
+class Circle {
+    private double radius;
+
+    public Circle() {
+        this(1);
+    }
+
+    public Circle(double radius) {
+        setRadius(radius);
+        System.out.println("\nConstructed circle and it's radius " + radius);
+
+        System.out.println("Area = " + getArea());
+
+        System.out.println("Perimeter = " + getPerimeter()+"\n");
+    }
+
+    public Circle(Circle other) {
+        this(other.radius);
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        if (radius > 0)
+            this.radius = radius;
+        else
+            System.out.println("Radius has to be positive.");
+    }
+
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle's radius = " + radius;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Circle))
+            return false;
+        Circle other = (Circle) obj;
+        return radius == other.radius;
+    }
+}
+
+
+public class demo {
+
+    public static void main(String[] args) throws IOException {
+        FileReader fr;
+        File file = new File("C:\\Users\\Talha Yusuf\\Desktop\\yazılım örnekler\\java örnekler\\untitled\\src\\inputQuiz1.txt");//buraya inputQuiz1.txt dosyasınızın path adresini girip iki ayraçlı(\\) olacak şekilde düzenleyiniz!
+        String[] lines = null;
+        char data[] = new char[(int) file.length()];
+
+        try {
+            fr = new FileReader(file);
+            fr.read(data);
+            lines = new String(data).split("\n");
+        } catch (FileNotFoundException e) {
+            System.out.println("File isn't here." + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("File not readable." + e.getMessage());
+        }
+        if(lines != null){
+            for (String line : lines) {
+                String[] shape = line.split(",");
+                if(shape[0].toLowerCase().equals("rectangle")){
+                    new Rectangle(parseDouble(shape[1]), parseDouble(shape[2]));
+                }
+                else if(shape[0].toLowerCase().equals("circle")){
+                    new Circle(parseDouble(shape[1]));
+                }
+            }
+        }
+        Rectangle defaultrectangle = new Rectangle();
+        defaultrectangle.setWidth(15);
+        defaultrectangle.setHeight(10);
+
+        Rectangle copyrectangle = new Rectangle(defaultrectangle);
+
+        System.out.println("Are the two Rectangle objects equal?\n - " + defaultrectangle.equals(copyrectangle));
+        System.out.println("Default Rectangle\n - " + defaultrectangle);
+        System.out.println("Copy Rectangle\n - " + copyrectangle);
+    }
+}
+
+
+
+ahmet main kısmı:----------------------------------------------------------------------------------------
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+
+public class Main {
+
+
+	public static void main(String[] args) throws IOException {
+
+		String file = "inputQuiz1.txt";
+		try {
+			FileReader fileReader = new FileReader(file);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+			String line;
+			while ((line = bufferedReader.readLine()) != null) {
+				String[] list = line.split(",");
+				if (list[0].equals("Rectangle")) {
+					double widht = Double.parseDouble(list[1]);
+					double height = Double.parseDouble(list[2]);
+					Rectangle rec = new Rectangle(widht,height);
+					System.out.println(rec);
+				}
+				if (list[0].equals("Circle")) {
+					double radius = Double.parseDouble(list[1]);
+					Circle circ = new Circle(radius);
+					System.out.println(circ);
+				}
+
+			}
+			bufferedReader.close();
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		}
+
+		System.out.println("----------------------------------END-OF-FILE----------------------------------");
+
+		Rectangle defRec = new Rectangle();
+		defRec.setWidth(15);
+		defRec.setHeight(10);
+		Rectangle copyRec = new Rectangle(defRec);
+		System.out.println("Default's informations : " + defRec);
+		System.out.println("Copy's informations : " + copyRec);
+		System.out.println("Equality : " + defRec.equals(copyRec));
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
