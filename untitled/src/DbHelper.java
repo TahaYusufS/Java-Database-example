@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class DbHelper {
 
     private String username="root";
-    private String password="xxxxxxx";//this is not the actual password but actual one works! the name is real tho.
+    private String password="xxxx";
     private  String dbUrl="jdbc:mysql://localhost:3306/sakila?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     public Connection getConnection() throws SQLException {
